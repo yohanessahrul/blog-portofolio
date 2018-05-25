@@ -1,38 +1,10 @@
 <template>
   <div id="app">
-
-    <div id="nav">
-      <router-link to="/">Beranda</router-link> |
-      <router-link to="/article">Blog</router-link>
+    <div id="nav" v-show="$route.path !== '/admin/article'">
+      <router-link to="/article">Home</router-link> |
+      <router-link to="/admin/article">Admin Blog</router-link> |
+      <router-link to="/login">Login</router-link>
     </div>
-    <!-- <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Yosaru</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-            <ul class="navbar-nav m-auto">
-                <li class="nav-item m-auto">
-                    <a class="nav-link" href="index.html"><router-link to="/">Home</router-link></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="category.html"><router-link to="/about">About</router-link></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html"><router-link to="/article">Blog</router-link></a>
-                </li>
-            </ul>
-            <ul class="navbar-nav login-button">
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html"><router-link to="/login">Login</router-link></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav> -->
-    
     <router-view/>
   </div>
 </template>
@@ -47,6 +19,11 @@
 import Footer from '@/components/Footer.vue'
 
   export default {
+    data () {
+      return {
+        
+      }
+    },
     components: {
       
     }

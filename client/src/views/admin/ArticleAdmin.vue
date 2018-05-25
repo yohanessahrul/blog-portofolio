@@ -83,7 +83,10 @@ export default {
     }
   },
   created() {
-    axios.get('http://localhost:3000/api/article/list')
+    if (!localStorage.getItem('token')) {
+      this.$router.push('/login')
+    }
+    axios.get('http://35.187.241.27/api/article/list')
     .then(response => {
       let dataResponse = response.data.data
       dataResponse.forEach(article => {
@@ -100,7 +103,7 @@ export default {
       console.log('Simpan artikel dijalankan')
       console.log(this.title)
       console.log(this.desc)
-      axios.post('http://localhost:3000/api/article/create', {
+      axios.post('http://35.187.241.27/api/article/create', {
         title: this.title,
         description: this.desc,
         url: this.url
@@ -115,7 +118,7 @@ export default {
     },
     deleteArticle: function(index,id) {
       if(confirm('Yakin mau hapus?')) {
-        axios.delete(`http://localhost:3000/api/article/delete/${id}`)
+        axios.delete(`http://35.187.241.27/api/article/delete/${id}`)
         .then( () => {
           console.log('Hapus data berhasil')
           this.articles.splice(index, 1)

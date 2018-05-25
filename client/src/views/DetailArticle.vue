@@ -25,7 +25,7 @@ export default {
   },
   props: [ 'id' ],
   created() {
-    axios.get('http://localhost:3000/api/article/detailarticle/' + this.id)
+    axios.get('http://35.187.241.27/api/article/detailarticle/' + this.id)
     .then(response => {
       console.log(response.data.data)
       this.title = response.data.data.title
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     rapihinParagraf (value) {
-      return value.split('\n\n').join(`\n`)
+      return value.split('\n\n').join(` `)
       // return value
     } 
   }
@@ -61,15 +61,12 @@ export default {
   margin: 0 auto;
 }
 .paragraf {
-  /* width: 70%; */
-
   padding: 100px;
   word-wrap: break-word !important;
   line-height: 25px;
   text-align: left;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif !important;
-  /* margin: 0 auto; */
 }
 
 @media (max-width: 576px) {

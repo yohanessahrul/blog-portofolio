@@ -45,7 +45,7 @@ export default {
     }
   },
   beforeCreate() {
-    axios.get('http://localhost:3000/api/article/list')
+    axios.get('http://35.187.241.27/api/article/list')
     .then(response => {
       // console.log(response.data.data)
       let data = response.data.data

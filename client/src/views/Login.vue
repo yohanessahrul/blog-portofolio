@@ -1,57 +1,67 @@
 <template>
-<div class="container">
-<div class="row col-lg-12">
-  <div class="col-md-4">
-
-  </div>
-  <aside class="col-md-4">
-    <div class="card">
-      <article class="card-body">
-      <a href="" class="float-right btn btn-outline-primary">Sign up</a>
-      <h4 class="card-title mb-4 mt-1">Sign in</h4>
-        <form>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <!-- <form> -->
           <div class="form-group">
-            <label>Your email</label>
-            <input name="" class="form-control" placeholder="Email" type="email">
-          </div> <!-- form-group// -->
+            <label for="exampleInputEmail1">Email</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" v-model="email"> {{ email }}
+          </div>
           <div class="form-group">
-            <a class="float-right" href="#">Forgot?</a>
-            <label>Your password</label>
-            <input class="form-control" placeholder="******" type="password">
-          </div> <!-- form-group// --> 
-          <div class="form-group"> 
-          <div class="checkbox">
-            <label> <input type="checkbox"> Save password </label>
-          </div> <!-- checkbox .// -->
-          </div> <!-- form-group// -->  
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="password"> {{ password }}
+          </div>
+          <!-- <div class="form-group">
+            <label for="exampleInputEmail1">First Name</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="First name">
+          </div>
           <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block"> Login  </button>
-          </div> <!-- form-group// -->                                                           
-        </form>
-      </article>
+            <label for="exampleInputEmail1">Last Name</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Last name">
+          </div> -->
+          <button type="submit" class="btn btn-primary" @click="login">Submit</button>
+        <!-- </form> -->
+      </div>
+      <div class="col-md-4"></div>
     </div>
-  </aside>
-  <div class="col-md-4">
-    
   </div>
-</div>
-</div>
-
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-
-}
-
- $(document).on('click.nav','.navbar-collapse.in',function(e) {
-    if( $(e.target).is('a') ) {
-        $(this).removeClass('in').addClass('collapse');
+  name: 'login',
+  data () {
+    return {
+      email: '',
+      password: ''
     }
-});
+  },
+  methods: {
+    login () {
+      axios.post('http://localhost:3000/api/user/login', {
+        email: this.email,
+        password: this.password
+      })
+        .then((response) => {
+          let data = response.data
+          localStorage.setItem('token', data.token)
+          
+          console.log(response)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+  }
+}
 
 </script>
 
 <style>
-
+  * {
+    text-align: left;
+  }
 </style>
