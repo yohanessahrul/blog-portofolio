@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="article-admin">
+      <button @click="logout">Logout</button>
       <br><br>
       <h1 style="text-align: left;">Data Article</h1>
       <button type="button" class="btn btn-primary" style="display:table; text-align:left;" data-toggle="modal" data-target=".bd-example-modal-lg">Tambah</button>
@@ -127,6 +128,10 @@ export default {
           console.log(err)
         })
       }
+    },
+    logout () {
+      localStorage.removeItem('token')
+      this.$router.push('/login')
     }
   }
 }

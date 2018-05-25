@@ -6,20 +6,12 @@
         <!-- <form> -->
           <div class="form-group">
             <label for="exampleInputEmail1">Email</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" v-model="email"> {{ email }}
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" v-model="email">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="password"> {{ password }}
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="password">
           </div>
-          <!-- <div class="form-group">
-            <label for="exampleInputEmail1">First Name</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="First name">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Last Name</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Last name">
-          </div> -->
           <button type="submit" class="btn btn-primary" @click="login">Submit</button>
         <!-- </form> -->
       </div>
@@ -48,7 +40,7 @@ export default {
         .then((response) => {
           let data = response.data
           localStorage.setItem('token', data.token)
-          
+          this.$router.push('/admin')
           console.log(response)
         })
         .catch((err) => {

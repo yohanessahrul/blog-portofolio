@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div id="nav" v-show="$route.path !== '/admin/article'">
-      <router-link to="/article">Home</router-link> |
-      <router-link to="/admin/article">Admin Blog</router-link> |
+      <router-link to="/">Home</router-link> |
+      <!-- <router-link to="/admin">Admin Blog</router-link> | -->
       <router-link to="/login">Login</router-link>
     </div>
     <router-view/>
@@ -11,17 +11,17 @@
 
 <script>
 
- $(document).on('click.nav-item','.navbar-collapse.in',function(e) {
+  $(document).on('click.nav-item','.navbar-collapse.in',function(e) {
     if( $(e.target).is('a') ) {
         $(this).removeClass('in').addClass('collapse');
     }
-});
+  })
 import Footer from '@/components/Footer.vue'
 
   export default {
     data () {
       return {
-        
+
       }
     },
     components: {
